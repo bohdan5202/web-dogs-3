@@ -1,0 +1,12 @@
+img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-position: center 10%;
+  object-fit: cover;
+  display: block;
+}
+
+ion-note {
+  font-size: 1rem;
+  color: var(--ion-text-color);
+}

@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/breeds"></ion-back-button>
+      </ion-buttons>
+    <ion-title> Details </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggle()" aria-label="Toggle favourite"> <ion-icon slot="icon-only" [name]="breedFav() ? 'heart' : 'heart-outline'" [color]="breedFav() ? 'danger' : 'white'" ></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    @if (breedcop(); as b){
+
+      <img src="{{ b.image }}" alt="{{ b.name}}">
+      <div class="ion-padding">
+        <h2>{{ b.name }}</h2>
+        <p>{{ b.description }}</p>
+      </div>
+      <ion-list [inset]="true">
+        <ion-item>
+
+          <ion-label>
+            <p>Temperament</p>
+            <h3>{{ b.temperament}}</h3>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>
+            <p>Size</p>
+            <h3>{{ b.size}}</h3>
+            </ion-label>
+        </ion-item>
+      </ion-list>
+    } @else {
+      <div class="ion-display-flex ion-justify-content-center ion-align-items-center" style="height: 100%">
+      <div class="ion-text-center ion-text-uppercase ion-padding" >
+        <ion-text color="warning" >Breed not found</ion-text>
+      </div>
+      </div>
+    }
+  </ion-content>

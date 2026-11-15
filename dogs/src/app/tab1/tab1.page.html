@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Breeds </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+      <ion-searchbar placeholder="Search breeds" (ionInput)="onSearch($event)"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Breeds</ion-title>
+    </ion-toolbar>
+
+  </ion-header>
+
+  <ion-list>
+    @for (breed of filtered(); track breed.id){
+      <ion-item detail [routerLink]="['/tabs/tab1', breed.id]">
+        <ion-thumbnail slot="start">
+          <img src="{{breed.image}}" alt = "{{breed.name}}">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ breed.name }}</h2>
+          <p>{{ breed.temperament }}</p>
+        </ion-label>
+      </ion-item>
+    } @empty {
+      <div class="ion-text-center ion-padding" >
+        <ion-text>No breeds found</ion-text>
+      </div>
+    }
+  </ion-list>
+</ion-content>
